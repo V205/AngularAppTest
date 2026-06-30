@@ -1,0 +1,31 @@
+<header class="navbar">
+  <div class="header-content">
+    <div class="logo">Varun Electronics</div>
+    <p class="tagline">Trusted electronics store • Fast Delivery</p>
+  </div>
+</header>
+
+<div *ngIf="selectedProduct" class="detail-panel">
+  <div class="detail-icon-wrapper">
+    <i [ngClass]="'bi ' + selectedProduct.image" class="detail-icon"></i>
+  </div>
+  <h2>{{ selectedProduct.name }}</h2>
+  <p class="detail-desc">{{ selectedProduct.description }}</p>
+  <div class="detail-footer">
+    <span>Price: ${{ selectedProduct.price }}</span>
+    <button class="close-btn" (click)="closeDetails()">Close Details</button>
+  </div>
+</div>
+
+<div class="products-grid">
+  <div class="product-card" *ngFor="let product of products">
+    <div class="product-icon-container">
+      <i [ngClass]="'bi ' + product.image" class="catalog-icon"></i>
+    </div>
+    <h3 class="product-title">{{ product.name }}</h3>
+    <div class="product-footer">
+      <span class="product-price">${{ product.price }}</span>
+      <button type="button" class="action-btn" (click)="selectProduct(product)">View Details</button>
+    </div>
+  </div>
+</div>
